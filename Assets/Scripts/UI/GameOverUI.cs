@@ -1,10 +1,28 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI recipesDeliveredText;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button mainmenuButton;
+
+    private void Awake()
+    {
+        restartButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.GameScene);
+        });
+
+        mainmenuButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.MainMenuScene);
+        });
+
+        Time.timeScale = 1f;
+    }
 
     private void Start()
     {
